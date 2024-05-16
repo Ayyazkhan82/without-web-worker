@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>without web worker</title>
+    <style>
+        .container{
+            text-align: center;
+            margin: 50px;
+        }
+        button{
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>without web worker</h1>
+        <p>Counter: <span id="counter">0</span></p>
+        <button id="incrementBtn">Increment</button>
+        <button id="decrementBtn">Decrement</button>
+        <button id="heavyBtn">Heavy calculation</button>
+        <h2 id="output"></h2>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded",function (){
+            let counter = 0;
+            const counterDisplay = document.getElementById("counter");
+             let incrementBtn = document.getElementById("incrementBtn");
+             let decrementBtn = document.getElementById("decrementBtn");
+
+             incrementBtn.onclick = function () {
+                counter++;
+                counterDisplay.innerHTML = counter;
+             };
+              decrementBtn.onclick = function () {
+                counter--;
+                counterDisplay.innerHTML = counter;
+              };
+
+              document.getElementById("heavyBtn").addEventListener("click", function (){
+                heavyCalculation();
+              });
+              function heavyCalculation(){
+                let result = 0;
+                for (let i = 0; i < 1000000560; i++){
+                    result += Math.aqrt(i);
+                }
+                console.log("Heavy calculation done. Result:", result);
+              }
+        });
+    </script>
+</body>
+</html>
